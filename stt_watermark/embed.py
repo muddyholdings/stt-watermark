@@ -95,12 +95,12 @@ def _embed_bits_inplace(
     """Modulate log-magnitudes in-band by ±α·PN[k] per bit, replicated across
     FRAMES_PER_BIT consecutive frames.
 
-    Operating in log-magnitude (dB-like) domain gives a much more uniform
-    distribution across bins than linear magnitude, which means the detector's
-    correlation has tight noise variance — speech spectral lines no longer
-    dominate the correlation sum. α=0.15 corresponds to ~1.3 dB peak
-    modulation, audible on synthetic test signals but documented as v0.3
-    work to add a smoothed-weight psychoacoustic shaper.
+    Operating in log-magnitude (dB-like) domain gives a uniform distribution
+    across bins, so detector correlation has tight noise variance. α=0.15
+    corresponds to ~1.3 dB peak modulation. v0.3 explored psychoacoustic
+    weighting (`smoothed_weight()`) but synthetic-SNR tests can't validate
+    the masking gains — that path is gated on a real-speech (F5-TTS) corpus.
+    The `smoothed_weight()` helper stays available for that future work.
     """
     lo, hi = params.band_lo_bin, params.band_hi_bin
     eps = 1e-8

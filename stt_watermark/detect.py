@@ -96,15 +96,10 @@ def _offset_candidates(span: int):
 def _decode_bits(
     spec: np.ndarray, params: CodecParams, frame_offset: int, n_bits: int
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Flat-weighted correlation against PN(frame_idx).
-
-    A naive matched filter that re-derives the embedder's per-bin weight
-    from the received audio looks attractive on paper, but the watermark
-    perturbation is itself correlated with the weight, so recomputed-weight
-    correlation has a sign-dependent bias term that pollutes detection. The
-    flat-weighted correlator is suboptimal (loses ~3 dB vs an oracle weight
-    detector) but unbiased — it just sees less embedding energy in the
-    quiet bins, which the embedder skipped on purpose anyway.
+    """Flat-weighted correlation against PN(frame_idx). Pairs with the v0.2
+    flat-α embedder. v0.3 matched-filter variant (using smoothed_weight()
+    from _codec) is gated on a real-speech corpus that synthetic tests
+    can't validate — see docs/watermark-design.md §8.2.
     Returns (hard_bits, soft_margins).
     """
     lo, hi = params.band_lo_bin, params.band_hi_bin
