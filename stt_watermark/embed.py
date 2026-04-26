@@ -26,7 +26,7 @@ def embed(
     payload: Optional[bytes] = None,
     creator_id: int = 0,
     transcript_id: str = "",
-    strength: float = 0.20,
+    strength: float = 0.15,
 ) -> tuple[np.ndarray, dict]:
     """Embed a 128-bit watermark into mono audio.
 

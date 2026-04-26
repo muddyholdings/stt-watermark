@@ -19,15 +19,17 @@ N_FFT = 2048
 HOP = 512
 WINDOW = "hann"
 
-# Embedding band (Hz). 2–6 kHz: above the dominant speech-formant region (so
-# low audibility) but below MP3's psychoacoustic discard threshold (so it
-# survives compression).
-BAND_LOW_HZ = 2000.0
-BAND_HIGH_HZ = 6000.0
+# Embedding band (Hz). 1.5–7.5 kHz: spans most of the consonant/sibilant
+# region (4–8 kHz) and the upper-formant region (1.5–3 kHz) so we get good
+# coverage of speech energy without venturing too far into MP3's psycho-
+# acoustic discard zone (>10 kHz at low bitrates). Wider band ⇒ more STFT
+# bins per frame ⇒ tighter detector correlation, which buys us a smaller α.
+BAND_LOW_HZ = 1500.0
+BAND_HIGH_HZ = 7500.0
 
 # Frames per bit. Higher = more redundant, more robust, but uses more audio.
 # 4 frames @ hop=512 @ 24kHz ≈ 85ms per bit, so 128 bits ≈ 11 sec of audio.
-FRAMES_PER_BIT = 6
+FRAMES_PER_BIT = 8
 
 # Magic number ("TT" big-endian) — first 16 bits of every payload, doubles as
 # a sync marker.
