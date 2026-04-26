@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stt-watermark"
+version = "0.1.0a1"
+description = "Inaudible spread-spectrum audio watermark for AI-generated speech (EU AI Act Article 50 layer 2)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Muddy Holdings LLC", email = "hello@stt.ai" }]
+keywords = ["watermark", "audio", "ai-generated", "tts", "deepfake", "eu-ai-act"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio",
+  "Topic :: Security",
+]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.11",
+  "soundfile>=0.12",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "pytest-cov"]
+
+[project.urls]
+Homepage = "https://github.com/sttaigit/stt-watermark"
+Issues = "https://github.com/sttaigit/stt-watermark/issues"
+Documentation = "https://github.com/sttaigit/stt-watermark#readme"
+"Design Doc" = "https://github.com/nadermx/stt/blob/master/docs/watermark-design.md"
+
+[project.scripts]
+stt-watermark = "stt_watermark.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["stt_watermark*"]
+exclude = ["tests*"]
