@@ -92,14 +92,15 @@ def _bytes_to_bits(b: bytes) -> np.ndarray:
 def _embed_bits_inplace(
     spec: np.ndarray, bits: np.ndarray, params: CodecParams, strength: float
 ) -> None:
-    """Modulate log-magnitudes in-band by ±strength·PN[k] per bit, replicated
-    across FRAMES_PER_BIT consecutive frames.
+    """Modulate log-magnitudes in-band by ±α·PN[k] per bit, replicated across
+    FRAMES_PER_BIT consecutive frames.
 
     Operating in log-magnitude (dB-like) domain gives a much more uniform
     distribution across bins than linear magnitude, which means the detector's
     correlation has tight noise variance — speech spectral lines no longer
-    dominate the correlation sum. α=0.1 corresponds to ~1 dB peak modulation,
-    well below typical speech-coding quantization noise.
+    dominate the correlation sum. α=0.15 corresponds to ~1.3 dB peak
+    modulation, audible on synthetic test signals but documented as v0.3
+    work to add a smoothed-weight psychoacoustic shaper.
     """
     lo, hi = params.band_lo_bin, params.band_hi_bin
     eps = 1e-8
