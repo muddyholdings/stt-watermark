@@ -8,7 +8,7 @@ The detector is open-source so any third party can independently verify "this cl
 
 ## Status
 
-Alpha (v0.1). Not yet on PyPI. See [design doc](https://github.com/nadermx/stt/blob/master/docs/watermark-design.md) for algorithm, threat model, and robustness gates.
+Alpha (v0.1). Not yet on PyPI. See the README below for the algorithm and robustness gates.
 
 ## Install
 
@@ -42,7 +42,7 @@ stt-watermark detect file.wav --json
 
 Spread-spectrum (DSSS) in the STFT magnitude domain, mid-frequency band (2–6 kHz), 128-bit payload (magic + creator_id + transcript_id_hash + CRC). Pure NumPy + SciPy, CPU-only, no torch.
 
-See the [design doc](https://github.com/nadermx/stt/blob/master/docs/watermark-design.md) for full details.
+See https://stt.ai for details.
 
 ## Robustness (v0.1 targets)
 

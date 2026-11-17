@@ -31,10 +31,10 @@ dependencies = [
 test = ["pytest>=7", "pytest-cov"]
 
 [project.urls]
-Homepage = "https://github.com/sttaigit/stt-watermark"
-Issues = "https://github.com/sttaigit/stt-watermark/issues"
-Documentation = "https://github.com/sttaigit/stt-watermark#readme"
-"Design Doc" = "https://github.com/nadermx/stt/blob/master/docs/watermark-design.md"
+Homepage = "https://stt.ai"
+Repository = "https://github.com/muddyholdings/stt-watermark"
+Issues = "https://github.com/muddyholdings/stt-watermark/issues"
+Documentation = "https://github.com/muddyholdings/stt-watermark#readme"
 
 [project.scripts]
 stt-watermark = "stt_watermark.cli:main"

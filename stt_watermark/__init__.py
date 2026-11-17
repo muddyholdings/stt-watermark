@@ -1,6 +1,6 @@
 """stt-watermark: inaudible spread-spectrum audio watermark for AI-generated speech.
 
-See https://github.com/nadermx/stt/blob/master/docs/watermark-design.md for the
+See https://stt.ai for the
 algorithm, threat model, and robustness gates.
 """
 
